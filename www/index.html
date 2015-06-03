@@ -36,6 +36,7 @@
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
+                <button onclick="enviar();">Enviar</button>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
@@ -43,8 +44,18 @@
         <script type="text/javascript">
             app.initialize();
             document.addEventListener('deviceready', function() {
-                alert("ok");
+                socket = io.connect('http://picnic.pe:8862');
+
+                socket.on("connect", function() {
+                    alert("conectado");
+                    console.log("usuario conectado al servidor");
+                });
+                function enviar(){
+                    socket.emit("send","Holaaaa");
+                }
+                
             });
+
         </script>
     </body>
 </html>
