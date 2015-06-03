@@ -36,10 +36,10 @@
             <button onclick="enviar();">Enviar</button>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
             document.addEventListener('deviceready', function() {
+                alert("READY");
                 socket = io.connect('http://picnic.pe:8865');
 
                 socket.on("connect", function() {
